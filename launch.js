@@ -1,9 +1,13 @@
+import { Cookie } from "./helpers.js";
+import {clientId, redirectUri} from './config.js'
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString);
-const clientId = "7fdc0cd8-36d5-4e4d-830f-c0897f6b6458"
 
 const fhirUrl = urlParams.get('iss')
+
+Cookie.set('fhir_url', fhirUrl, {secure: true, "max-age": 3600})
+
 const launchId = urlParams.get('launch')
 
 async function getWellKnown(){
@@ -12,20 +16,22 @@ async function getWellKnown(){
             Accept: 'application/json'
         }
     })
-    let wellKnown = await response.json()
 
-    return wellKnown
+    return await response.json()
 }
 
 function authorize(data){
     //.replace
-    authEndpoint = data.authorization_endpoint;
+    let authEndpoint = data.authorization_endpoint;
+    let token_endpoint = data.token_endpoint;
+    Cookie.set('token_endpoint', token_endpoint, {secure: true, "max-age": 3600})
+
     debugger;
 
     let auth_location = `${authEndpoint}?` +
         "response_type=code&" +
         `client_id=${clientId}&` +
-        "redirect_uri=https%3A%2F%2Fgmodrogan.github.io%2Fmgw_soh%2Fafter-auth&" +
+        `redirect_uri=${encodeURI(redirectUri)}&` +
         `launch=${launchId}&` +
         "scope=user%2FPatient.read%20launch&" +
         "state=98wrghuwuogerg97&" +
