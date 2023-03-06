@@ -37,10 +37,12 @@ async function getAccessToken(){
     return token
 }
 
-async function getPatient(id){
+async function getPatient(id, token){
     let response = await fetch(fhirUrl + '/Patient/' + id, {
         headers: {
-            Accept: 'application/json'
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+
         }
     })
     return await response.json()
@@ -54,7 +56,7 @@ getAccessToken().then((data) => {
     token = data.access_token
     // initiate patient read call
 
-    getPatient(patient).then((data) => {
+    getPatient(patient, token).then((data) => {
         console.log(data)
     }).catch((err) => {
         debugger
