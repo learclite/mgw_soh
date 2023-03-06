@@ -10,7 +10,7 @@ var accessTokenPostBody = {
     'grant_type': 'authorization_code',
     'code': code,
     'client_id': clientId,
-    'state': state
+    'redirect_uri': 'https://gmodrogan.github.io/mgw_soh/after-auth'
 };
 
 function getWwwFormUrlEncodedData(data){
