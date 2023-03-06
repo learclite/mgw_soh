@@ -9,7 +9,7 @@ const tokenEndpoint = 'https://authorization.cerner.com/tenants/ec2458f2-1e24-41
 var accessTokenPostBody = {
     'grant_type': 'authorization_code',
     'code': code,
-    'clientId': clientId,
+    'client_id': clientId,
     'state': state
 };
 
