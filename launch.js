@@ -20,7 +20,7 @@ async function getWellKnown(){
 function authorize(data){
     //.replace
     authEndpoint = data.authorization_endpoint;
-
+debugger;
     let auth_location = `${authEndpoint}?` +
         "response_type=code&" +
         `client_id=${clientId}&` +
@@ -34,8 +34,10 @@ function authorize(data){
 
 
 getWellKnown().then((data) => {
+    debugger
     authorize(data)
 }).catch((err) => {
+    debugger
     console.log('error fetching well-known')
 })
 
