@@ -1,4 +1,4 @@
-import { Cookie } from "./helpers.js";
+import {Cookie} from "./helpers.js";
 import {clientId, redirectUri} from './config.js'
 
 const queryString = window.location.search
@@ -10,7 +10,7 @@ Cookie.set('fhir_url', fhirUrl, {secure: true, "max-age": 3600})
 
 const launchId = urlParams.get('launch')
 
-async function getWellKnown(){
+async function getWellKnown() {
     let response = await fetch(fhirUrl + '/.well-known/smart-configuration', {
         headers: {
             Accept: 'application/json'
@@ -20,7 +20,7 @@ async function getWellKnown(){
     return await response.json()
 }
 
-function authorize(data){
+function authorize(data) {
     //.replace
     let authEndpoint = data.authorization_endpoint;
     let token_endpoint = data.token_endpoint;
