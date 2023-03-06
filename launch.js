@@ -34,7 +34,6 @@ debugger;
 
 
 getWellKnown().then((data) => {
-    debugger
     authorize(data)
 }).catch((err) => {
     debugger
