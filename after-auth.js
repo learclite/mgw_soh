@@ -1,5 +1,5 @@
 import {Cookie, getWwwFormUrlEncodedData} from "./helpers.js";
-import {clientId, redirectUri} from './config.js'
+import {clientId, indexUri, redirectUri} from './config.js'
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString);
@@ -38,7 +38,7 @@ getAccessToken().then((data) => {
     }
 
     Cookie.set('token_data', JSON.stringify(data), {secure: true, "max-age": 900})
-    location.assign('/index.html')
+    location.assign(indexUri)
 
 }).catch((err) => {
     debugger
