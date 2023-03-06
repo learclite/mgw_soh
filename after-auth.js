@@ -28,7 +28,7 @@ async function getAccessToken(){
     let response = await fetch(tokenEndpoint, {
         method: "POST",
         headers: {
-            'Accept' : 'Accept: application/json',
+            'Accept' : 'application/json',
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: getWwwFormUrlEncodedData(accessTokenPostBody)
