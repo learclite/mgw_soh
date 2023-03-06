@@ -42,7 +42,6 @@ async function getPatient(id, token){
         headers: {
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`
-
         }
     })
     return await response.json()

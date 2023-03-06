@@ -20,6 +20,7 @@ async function getWellKnown(){
 function authorize(data){
     //.replace
     authEndpoint = data.authorization_endpoint;
+    debugger;
 
     let auth_location = `${authEndpoint}?` +
         "response_type=code&" +
