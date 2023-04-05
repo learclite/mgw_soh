@@ -21,6 +21,7 @@ async function getAccessToken() {
         method: "POST",
         headers: {
             'Accept': 'application/json',
+            'mgw-custom': 'a-random-value-for-this-custom-header',
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: getWwwFormUrlEncodedData(accessTokenPostBody)
