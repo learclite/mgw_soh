@@ -47,7 +47,7 @@ getPatient().then((data) => {
     console.log('error fetching patient data')
 })
 
-getFhirUser().then((data) => {
+getPractitioner().then((data) => {
     console.log(data)
     document.getElementById('mgw-data-url-fhir-user').textContent = fhirUrl + '/Practitioner/' + token_data.user
     document.getElementById('mgw-data-content-fhir-user').textContent= JSON.stringify(data)
