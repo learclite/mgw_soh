@@ -23,8 +23,11 @@ async function getPatient() {
 
 getPatient().then((data) => {
     console.log(data)
-    document.getElementById('mgw-data-url').textContent = fhirUrl + '/Patient/' + token_data.patient
-    document.getElementById('mgw-data-content').textContent= JSON.stringify(data)
+    document.getElementById('mgw-data-url-patient').textContent = fhirUrl + '/Patient/' + token_data.patient
+    document.getElementById('mgw-data-content-patient').textContent= JSON.stringify(data)
+
+    document.getElementById('mgw-data-url-fhir-user').textContent = fhirUrl + '/Practitioner/' + token_data.user
+    document.getElementById('mgw-data-content-fhir-user').textContent= JSON.stringify(data)
 }).catch((err) => {
     debugger
     console.log('error fetching patient data')
