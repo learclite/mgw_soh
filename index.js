@@ -21,14 +21,37 @@ async function getPatient() {
     return await response.json()
 }
 
+async function getPractitioner() {
+
+    if (!token_data.access_token || !token_data.user) {
+        console.log('no access token or fhirUser found in cookie')
+        return
+    }
+
+    let response = await fetch(fhirUrl + '/Practitioner/' + token_data.user, {
+        headers: {
+            'Accept': 'application/json',
+            'mgw-custom-header-two': 'my-custom-header-value-when-reading-a-practitioner',
+            'Authorization': `Bearer ${token_data.access_token}`
+        }
+    })
+    return await response.json()
+}
+
 getPatient().then((data) => {
     console.log(data)
     document.getElementById('mgw-data-url-patient').textContent = fhirUrl + '/Patient/' + token_data.patient
     document.getElementById('mgw-data-content-patient').textContent= JSON.stringify(data)
+}).catch((err) => {
+    debugger
+    console.log('error fetching patient data')
+})
 
+getFhirUser().then((data) => {
+    console.log(data)
     document.getElementById('mgw-data-url-fhir-user').textContent = fhirUrl + '/Practitioner/' + token_data.user
     document.getElementById('mgw-data-content-fhir-user').textContent= JSON.stringify(data)
 }).catch((err) => {
     debugger
-    console.log('error fetching patient data')
+    console.log('error fetching practitioner data')
 })
