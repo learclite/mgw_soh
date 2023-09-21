@@ -33,7 +33,7 @@ function authorize(data) {
         `client_id=${clientId}&` +
         `redirect_uri=${encodeURI(redirectUri)}&` +
         `launch=${launchId}&` +
-        "scope=user%2FPatient.read%20launch%20fhirUser&" +
+        `scope=${encodeURIComponent("user/Patient.read launch fhirUser user/Observation.read")}` +
         "state=98wrghuwuogerg97&" +
         `aud=${fhirUrl}`
     location.assign(auth_location)
