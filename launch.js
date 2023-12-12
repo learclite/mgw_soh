@@ -23,8 +23,8 @@ async function getWellKnown() {
 function authorize(data) {
     //.replace
     let authEndpoint = data.authorization_endpoint;
-    let token_endpoint = data.token_endpoint;
-    // let token_endpoint = "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/hosts/apigee.test/protocols/oauth2/profiles/smart-v1/token"
+    // let token_endpoint = data.token_endpoint;
+    let token_endpoint = "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/hosts/apigee.test/protocols/oauth2/profiles/smart-v1/token"
     Cookie.set('token_endpoint', token_endpoint, {secure: true, "max-age": 3600})
 
     debugger;
