@@ -21,7 +21,7 @@ async function getAccessToken() {
         method: "POST",
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/json'
         },
         body: getWwwFormUrlEncodedData(accessTokenPostBody)
     })
