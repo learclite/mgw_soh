@@ -9,7 +9,7 @@ let token_data_cookie = Cookie.get('token_data')
 const token_data = token_data_cookie != undefined ? JSON.parse(token_data_cookie) : null;
 const mgw_eat_active = Cookie.get('mgw_eat_active')
 
-if (mgw_eat_active){
+if (mgw_eat_active == "1"){
     document.getElementById('mgw-data-token-type').textContent= 'EAT'
 }
 
