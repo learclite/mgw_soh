@@ -1,5 +1,9 @@
 import { Cookie } from "./helpers.js";
 
+const launch_url = Cookie.get('launch_url')
+document.getElementById('mgw-launch-url').textContent=launch_url;
+document.getElementById('mgw-launch-url').href=launch_url;
+
 const fhirUrl = Cookie.get("fhir_url")
 let token_data_cookie = Cookie.get('token_data')
 const token_data = token_data_cookie != undefined ? JSON.parse(token_data_cookie) : null;
