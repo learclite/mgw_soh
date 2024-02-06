@@ -20,6 +20,8 @@ let toggle_token_type = function() {
     else {
     Cookie.set('mgw_eat_active', 1, {secure: true, "max-age": 3600})
     }
+    
+    location.assign(launch_url);
 }
 
 document.getElementById('mgw-data-token').textContent= JSON.stringify(token_data)
