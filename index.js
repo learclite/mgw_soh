@@ -19,7 +19,7 @@ let toggle_token_type = function() {
 }
 
 document.getElementById('mgw-data-token').textContent= JSON.stringify(token_data)
-document.getElementById ("toggle_token_type").addEventListener ("click", toggle_token_type, false);
+document.getElementById ("mgw-toggle-token-type").addEventListener ("click", toggle_token_type, false);
 
 async function getPatient() {
 
