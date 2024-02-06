@@ -3,10 +3,21 @@ import { Cookie } from "./helpers.js";
 const fhirUrl = Cookie.get("fhir_url")
 let token_data_cookie = Cookie.get('token_data')
 const token_data = token_data_cookie != undefined ? JSON.parse(token_data_cookie) : null;
-if (Cookie.get('mgw_eat_active')){
+const mgw_eat_active = Cookie.get('mgw_eat_active')
+
+if (mgw_eat_active){
     document.getElementById('mgw-data-token-type').textContent= 'EAT'
 }
 document.getElementById('mgw-data-token').textContent= JSON.stringify(token_data)
+
+function toggle_token_type() {
+    if(mgw_eat_active){
+        Cookie.set('mgw_eat_active', 0, {secure: true, "max-age": 3600})
+    }
+    else {
+    Cookie.set('mgw_eat_active', 1, {secure: true, "max-age": 3600})
+    }
+}
 
 async function getPatient() {
 
