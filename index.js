@@ -3,6 +3,7 @@ import { Cookie } from "./helpers.js";
 const fhirUrl = Cookie.get("fhir_url")
 let token_data_cookie = Cookie.get('token_data')
 const token_data = token_data_cookie != undefined ? JSON.parse(token_data_cookie) : null;
+document.getElementById('mgw-data-token').textContent= JSON.stringify(token_data)
 
 async function getPatient() {
 
