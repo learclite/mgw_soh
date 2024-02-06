@@ -5,8 +5,10 @@ const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString);
 
 const fhirUrl = urlParams.get('iss')
-
 Cookie.set('fhir_url', fhirUrl, {secure: true, "max-age": 3600})
+
+const token_endpoint_eat = "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/hosts/apigee.test/protocols/oauth2/profiles/smart-v1/token"
+const mgw_eat_active = Cookie.get('mgw_eat_active')
 
 const launchId = urlParams.get('launch')
 
@@ -23,8 +25,9 @@ async function getWellKnown() {
 function authorize(data) {
     //.replace
     let authEndpoint = data.authorization_endpoint;
-    let token_endpoint = data.token_endpoint;
-    // let token_endpoint = "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/hosts/apigee.test/protocols/oauth2/profiles/smart-v1/token"
+    let token_endpoint = mgw_eat_active ? token_endpoint_eat : data.token_endpoint;
+    // let token_endpoint = data.token_endpoint;
+    // let token_endpoint = 
     Cookie.set('token_endpoint', token_endpoint, {secure: true, "max-age": 3600})
 
     debugger;
