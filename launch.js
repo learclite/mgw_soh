@@ -27,7 +27,7 @@ async function getWellKnown() {
 function authorize(data) {
     //.replace
     let authEndpoint = data.authorization_endpoint;
-    let token_endpoint = mgw_eat_active ? token_endpoint_eat : data.token_endpoint;
+    let token_endpoint = mgw_eat_active == "1" ? token_endpoint_eat : data.token_endpoint;
     // let token_endpoint = data.token_endpoint;
     // let token_endpoint = 
     Cookie.set('token_endpoint', token_endpoint, {secure: true, "max-age": 3600})
