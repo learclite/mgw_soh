@@ -14,11 +14,11 @@ if (mgw_eat_active){
 }
 
 let toggle_token_type = function() {
-    if(mgw_eat_active){
+    if(mgw_eat_active == "1"){
         Cookie.set('mgw_eat_active', 0, {secure: true, "max-age": 3600})
     }
     else {
-    Cookie.set('mgw_eat_active', 1, {secure: true, "max-age": 3600})
+        Cookie.set('mgw_eat_active', 1, {secure: true, "max-age": 3600})
     }
     
     location.assign(launch_url);
