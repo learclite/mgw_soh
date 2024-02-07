@@ -8,6 +8,7 @@ Cookie.set('index_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 
  'after_auth_timestamp_out',
  'after_auth_timestamp_out'].forEach(fieldName => document.getElementById(field_name).textContent= Cookie.get(field_name))
 
+document.getElementById('duration').textContent = ((new Date(Cookie.get('index_timestamp_in')) - new Date(Cookie.get('launch_timestamp_in'))) / 1000).toFixed(3)
 
 const launch_url = Cookie.get('launch_url')
 document.getElementById('mgw-launch-url').textContent=launch_url;
