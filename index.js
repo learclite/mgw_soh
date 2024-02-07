@@ -2,6 +2,13 @@ import { Cookie } from "./helpers.js";
 
 Cookie.set('index_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 3600})
 
+['launch_timestamp_in',
+ 'launch_timestamp_out', 
+ 'after_auth_timestamp_in',
+ 'after_auth_timestamp_out',
+ 'after_auth_timestamp_out'].forEach(fieldName => document.getElementById(field_name).textContent= Cookie.get(field_name))
+
+
 const launch_url = Cookie.get('launch_url')
 document.getElementById('mgw-launch-url').textContent=launch_url;
 document.getElementById('mgw-launch-url').href=launch_url;
