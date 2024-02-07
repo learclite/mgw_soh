@@ -1,6 +1,8 @@
 import {Cookie, getWwwFormUrlEncodedData} from "./helpers.js";
 import {clientId, indexUri, redirectUri} from './config.js'
 
+Cookie.set('after_auth_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 3600})
+
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString);
 const code = urlParams.get('code')
@@ -38,6 +40,7 @@ getAccessToken().then((data) => {
     }
 
     Cookie.set('token_data', JSON.stringify(data), {secure: true, "max-age": 900})
+    Cookie.set('after_auth_timestamp_out', new Date().toJSON(), {secure: true, "max-age": 3600})
     location.assign(indexUri)
 
 }).catch((err) => {
