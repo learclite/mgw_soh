@@ -2,11 +2,8 @@ import { Cookie } from "./helpers.js";
 
 Cookie.set('index_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 3600})
 
-['launch_timestamp_in',
- 'launch_timestamp_out', 
- 'after_auth_timestamp_in',
- 'after_auth_timestamp_out',
- 'after_auth_timestamp_out'].forEach(fieldName => document.getElementById(field_name).textContent= Cookie.get(field_name))
+const telemetry_spans = ['launch_timestamp_in', 'launch_timestamp_out', 'after_auth_timestamp_in', 'after_auth_timestamp_out', 'after_auth_timestamp_out']
+telemetry_spans.forEach(field_name => document.getElementById(field_name).textContent= Cookie.get(field_name))
 
 document.getElementById('duration').textContent = ((new Date(Cookie.get('index_timestamp_in')) - new Date(Cookie.get('launch_timestamp_in'))) / 1000).toFixed(3)
 
