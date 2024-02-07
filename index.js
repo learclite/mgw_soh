@@ -1,5 +1,7 @@
 import { Cookie } from "./helpers.js";
 
+Cookie.set('index_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 3600})
+
 const launch_url = Cookie.get('launch_url')
 document.getElementById('mgw-launch-url').textContent=launch_url;
 document.getElementById('mgw-launch-url').href=launch_url;
