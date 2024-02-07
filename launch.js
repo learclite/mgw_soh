@@ -8,6 +8,7 @@ const fhirUrl = urlParams.get('iss')
 Cookie.set('fhir_url', fhirUrl, {secure: true, "max-age": 3600})
 
 Cookie.set('launch_url', window.location.toString(), {secure: true, "max-age": 3600})
+Cookie.set('launch_timestamp_in', new Date().toJSON(), {secure: true, "max-age": 3600})
 
 const token_endpoint_eat = "https://authorization.cerner.com/tenants/ec2458f2-1e24-41c8-b71b-0e701af7583d/hosts/apigee.test/protocols/oauth2/profiles/smart-v1/token"
 const mgw_eat_active = Cookie.get('mgw_eat_active')
@@ -33,7 +34,7 @@ function authorize(data) {
     Cookie.set('token_endpoint', token_endpoint, {secure: true, "max-age": 3600})
 
     debugger;
-
+    Cookie.set('launch_timestamp_out', new Date().toJSON(), {secure: true, "max-age": 3600})
     let auth_location = `${authEndpoint}?` +
         "response_type=code&" +
         `client_id=${clientId}&` +
