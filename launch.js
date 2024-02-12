@@ -40,7 +40,7 @@ function authorize(data) {
         `client_id=${clientId}&` +
         `redirect_uri=${encodeURI(redirectUri)}&` +
         `launch=${launchId}&` +
-        `scope=${encodeURIComponent("user/Patient.read launch fhirUser openid online_access user/Observation.read user/Immunization.read")}&` +
+        `scope=${encodeURIComponent("user/Patient.read launch fhirUser openid online_access user/Observation.read user/Immunization.read user/AllergyIntolerance.read")}&` +
         "state=98wrghuwuogerg97&" +
         `aud=${fhirUrl}`
     location.assign(auth_location)
